@@ -159,6 +159,7 @@ If you find this project helpful, consider [buying me a coffee](https://buymeaco
 
     ```php
     ${{ optional($order->shipping)->price ?? '0.00' }}
+    ```
 
 
     ```
@@ -182,3 +183,13 @@ Jadi meskipun admin mengubah harga produk di kemudian hari, harga di order lama 
 ### 3.Suggestion
 
 -   Logging & audit: audit trail untuk perubahan produk (siapa/apa/waktu) terutama jika ada perubahan harga atau penghapusan.
+
+#### 4. Screenshot
+
+## Before
+
+![Before Screenshot](/public/images/Before.jpg)
+
+## After
+
+![After Screenshot](/public/images/After.png)
