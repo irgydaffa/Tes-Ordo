@@ -172,14 +172,26 @@ Mencegah error "Trying to get property of non-object" yang bisa terjadi jika shi
 
 ### 2. If admin updates or deletes a product, order detail should not change.
 
-Tidak perlu mengubah kode karena desain database yang sudah ada sudah menangani kasus ini dengan baik:
+Sistem saya ubah menggunakan pendekatan "snapshot data" untuk memastikan riwayat order tetap akurat dan tidak berubah meskipun data produk diubah atau dihapus di kemudian hari.
 
-Harga Tersimpan di Cart
+#### 🔒 Cara Kerja Snapshot Data
 
-Pada tabel carts, harga disimpan dalam kolom price dan amount
-Saat order dibuat, harga produk saat itu disalin ke cart
-Jadi meskipun admin mengubah harga produk di kemudian hari, harga di order lama tetap tidak berubah
+1. **Penyimpanan Data Produk**
 
+    - Saat produk ditambahkan ke cart, sistem menyimpan:
+        - Nama produk (`product_name`)
+        - SKU produk (`product_sku`)
+        - Deskripsi produk (`product_description`)
+        - Harga saat pembelian (`price_at_purchase`)
+        - Gambar produk (`product_image`)
+
+2. **Isolasi dari Perubahan**
+
+    - Data order terproteksi dari:
+        - Perubahan nama/detail produk
+        - Perubahan harga produk
+        - Penghapusan produk
+    - Riwayat order tetap menampilkan data sesuai saat pembelian
 ### 3.Suggestion
 
 -   Logging & audit: audit trail untuk perubahan produk (siapa/apa/waktu) terutama jika ada perubahan harga atau penghapusan.

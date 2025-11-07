@@ -62,6 +62,38 @@
                 </tbody>
               </table>
 
+              {{-- Order items list --}}
+              @if($order->cart && $order->cart->count())
+                <h4 class="mt-4">Order Items</h4>
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Product</th>
+                      <th>Qty</th>
+                      <th>Unit Price</th>
+                      <th>Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach($order->cart as $cart)
+                      <tr>
+                        <td>{{$loop->iteration}}</td>
+                        <td>
+                          @if($cart->product_image)
+                            <img src="{{ asset($cart->product_image) }}" alt="" style="max-width:50px; max-height:50px; margin-right:8px;"> 
+                          @endif
+                          {{ $cart->product_name ?: 'Product without name' }}
+                        </td>
+                        <td>{{$cart->quantity}}</td>
+                        <td>${{number_format($cart->price, 2)}}</td>
+                        <td>${{number_format($cart->amount, 2)}}</td>
+                      </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+              @endif
+
               <section class="confirmation_part section_padding">
                 <div class="order_boxes">
                   <div class="row">

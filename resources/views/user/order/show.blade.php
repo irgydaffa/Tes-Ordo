@@ -72,14 +72,10 @@
                   <tr>
                     <td>{{$loop->iteration}}</td>
                     <td>
-                      @if(optional($cart->product)->photo)
-                        <img src="{{ asset(optional($cart->product)->photo) }}" alt="" style="max-width:50px; max-height:50px; margin-right:8px;"> 
+                      @if($cart->product_image)
+                        <img src="{{ asset($cart->product_image) }}" alt="" style="max-width:50px; max-height:50px; margin-right:8px;"> 
                       @endif
-                      @if(optional($cart->product)->title)
-                        {{ optional($cart->product)->title }}
-                      @else
-                        <em>Product removed</em>
-                      @endif
+                      {{ $cart->product_name ?: 'Product without name' }}
                     </td>
                     <td>{{$cart->quantity}}</td>
                     <td>${{number_format($cart->price, 2)}}</td>
