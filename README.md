@@ -174,8 +174,6 @@ Mencegah error "Trying to get property of non-object" yang bisa terjadi jika shi
 
 Sistem saya ubah menggunakan pendekatan "snapshot data" untuk memastikan riwayat order tetap akurat dan tidak berubah meskipun data produk diubah atau dihapus di kemudian hari.
 
-#### 🔒 Cara Kerja Snapshot Data
-
 1. **Penyimpanan Data Produk**
 
     - Saat produk ditambahkan ke cart, sistem menyimpan:
@@ -192,6 +190,7 @@ Sistem saya ubah menggunakan pendekatan "snapshot data" untuk memastikan riwayat
         - Perubahan harga produk
         - Penghapusan produk
     - Riwayat order tetap menampilkan data sesuai saat pembelian
+
 ### 3.Suggestion
 
 -   Logging & audit: audit trail untuk perubahan produk (siapa/apa/waktu) terutama jika ada perubahan harga atau penghapusan.

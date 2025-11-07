@@ -36,6 +36,16 @@ class CartController extends Controller
             // dd($already_cart);
             $already_cart->quantity = $already_cart->quantity + 1;
             $already_cart->amount = $product->price + $already_cart->amount;
+
+            // Update snapshot data jika belum ada
+            if (!$already_cart->product_name) {
+                $already_cart->product_name = $product->title;
+                $already_cart->product_sku = $product->sku;
+                $already_cart->product_description = $product->description;
+                $already_cart->price_at_purchase = $product->price;
+                $already_cart->product_image = $product->photo;
+            }
+
             // return $already_cart->quantity;
             if ($already_cart->product->stock < $already_cart->quantity || $already_cart->product->stock <= 0)
                 return back()->with('error', 'Stock not sufficient!.');
@@ -92,6 +102,15 @@ class CartController extends Controller
             $already_cart->quantity = $already_cart->quantity + $request->quant[1];
             // $already_cart->price = ($product->price * $request->quant[1]) + $already_cart->price ;
             $already_cart->amount = ($product->price * $request->quant[1]) + $already_cart->amount;
+
+            // Update snapshot data jika belum ada
+            if (!$already_cart->product_name) {
+                $already_cart->product_name = $product->title;
+                $already_cart->product_sku = $product->sku;
+                $already_cart->product_description = $product->description;
+                $already_cart->price_at_purchase = $product->price;
+                $already_cart->product_image = $product->photo;
+            }
 
             if ($already_cart->product->stock < $already_cart->quantity || $already_cart->product->stock <= 0)
                 return back()->with('error', 'Stock not sufficient!.');
