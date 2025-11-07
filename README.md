@@ -183,6 +183,7 @@ Jadi meskipun admin mengubah harga produk di kemudian hari, harga di order lama 
 ### 3.Suggestion
 
 -   Logging & audit: audit trail untuk perubahan produk (siapa/apa/waktu) terutama jika ada perubahan harga atau penghapusan.
+-   Jika user ingin checkout barang wajib mengisi shipping karena saat ini user masih bisa checkout tanpa mengisi shipping.
 
 #### 4. Screenshot
 
